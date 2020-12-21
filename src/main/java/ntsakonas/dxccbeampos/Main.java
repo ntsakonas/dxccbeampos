@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
+import static ntsakonas.dxccbeampos.CountryFileReader.loadDXCCEntities;
 import static ntsakonas.dxccbeampos.DXCCBeamPointing.calculateBeamingInfo;
 import static ntsakonas.dxccbeampos.DXCCBeamPointing.entityForPrefixLookup;
 
@@ -26,7 +27,7 @@ public class Main {
         }
 
         // load country file and extract DXCC entities info
-        Map<String, EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(CountryFileReader.getCountryFile());
+        Map<String, EntityInfo> entitiesInfo = loadDXCCEntities(CountryFileReader.getCountryFile());
 
         if (entitiesInfo.isEmpty()) {
             System.out.println("hmmm...could not read the country file...exiting");

@@ -40,7 +40,7 @@ public class CountryFileReader {
 
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
-    public static Map<String, EntityInfo> loadPrefixes(InputStream inputStream) {
+    public static Map<String, EntityInfo> loadDXCCEntities(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
             return countryFile

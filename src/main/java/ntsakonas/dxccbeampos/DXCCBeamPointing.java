@@ -23,14 +23,15 @@ public class DXCCBeamPointing {
    */
     public static Function<String, Optional<BeamingInfo>> calculateBeamingInfo(EntityInfo myDXCCEntity, Function<String, Optional<EntityInfo>> entityForPrefixFunc) {
         return inputLine -> {
-            BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamCalcFunction
+            // set myDXCCEntity as the reference for all calculations
+            BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFunction
                     = applyIfBothProvided(entitiesBeamingFrom(myDXCCEntity));
 
             return Stream.of(inputLine.toUpperCase())
                     .flatMap(input -> Stream.of(input)
                             .map(line -> line.split(" "))
                             .filter(prefixes -> prefixes.length == 2)
-                            .map(prefixes -> beamCalcFunction.apply(entityForPrefixFunc.apply(prefixes[0]), entityForPrefixFunc.apply(prefixes[1]))))
+                            .map(prefixes -> beamingCalculationFunction.apply(entityForPrefixFunc.apply(prefixes[0]), entityForPrefixFunc.apply(prefixes[1]))))
                     .findFirst()
                     .flatMap(beamingInfo -> beamingInfo);
         };
