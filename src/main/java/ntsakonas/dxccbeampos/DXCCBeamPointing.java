@@ -1,42 +1,28 @@
 package ntsakonas.dxccbeampos;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static ntsakonas.dxccbeampos.BeamPositioning.beamingForPrefixes;
-import static ntsakonas.dxccbeampos.BeamPositioningPrinter.printCalculationFailure;
 
 public class DXCCBeamPointing {
 
-    public final void beamInfo(String myDXCCPrefix, Function<String, Optional<EntityInfo>> entityForPrefix) {
+    public static BiFunction<EntityInfo, Function<String, Optional<EntityInfo>>, Function<String, Optional<BeamingInfo>>> beamInfo =
+            (myDXCCEntity, entityForPrefix) -> inputLine -> {
 
-        EntityInfo myDXCCEntity = entityForPrefix.apply(myDXCCPrefix)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
-
-        Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beamCalcFunction = beamingForPrefixes.apply(myDXCCEntity);
-
-        System.out.println(String.format("Your DXCC country is %s (%s)", myDXCCEntity.prefix, myDXCCEntity.countryName));
-        System.out.println("(keep entering prefix pairs as follows: DX TARGET)");
-        System.out.println("READY! (press CTRL+C to exit)");
-
-        // read input and display results
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        in.lines()
-                .flatMap(input -> calculateBeamings(input, entityForPrefix, beamCalcFunction))
-                .peek(positionInfo -> {
-                    if (!positionInfo.isPresent())
-                        printCalculationFailure();
-                })
-                .forEach(input -> input.ifPresent(BeamPositioningPrinter::printBeamings));
-    }
+                Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beamCalcFunction = beamingForPrefixes.apply(myDXCCEntity);
+                return Stream.of(inputLine)
+                        .flatMap(input -> calculateBeamings(inputLine, entityForPrefix, beamCalcFunction))
+                        .findFirst()
+                        .flatMap(beamingInfo -> beamingInfo);
+            };
 
     // Given a pair of DXCC prefixes, calculate beaming/distance between the DX station and both the target and my location
-    private Stream<Optional<BeamingInfo>> calculateBeamings(String input,
-                                                            Function<String, Optional<EntityInfo>> entityForPrefix,
-                                                            Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
+    private static Stream<Optional<BeamingInfo>> calculateBeamings(String input,
+                                                                   Function<String, Optional<EntityInfo>> entityForPrefix,
+                                                                   Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
         return Stream.of(input.toUpperCase())
                 .map(line -> line.split(" "))
                 .filter(prefixes -> prefixes.length == 2)
@@ -44,9 +30,9 @@ public class DXCCBeamPointing {
                         entityForPrefix.apply(prefixes[1]), beaming));
     }
 
-    private Optional<BeamingInfo> calculatePositions(Optional<EntityInfo> dxEntityInfo,
-                                                     Optional<EntityInfo> targetEntityInfo,
-                                                     Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
+    private static Optional<BeamingInfo> calculatePositions(Optional<EntityInfo> dxEntityInfo,
+                                                            Optional<EntityInfo> targetEntityInfo,
+                                                            Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
         return dxEntityInfo.flatMap(dxEntity -> targetEntityInfo.flatMap(targetEntity -> Optional.of(beaming.apply(dxEntity).apply(targetEntity))));
     }
 
