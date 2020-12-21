@@ -9,6 +9,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static ntsakonas.dxccbeampos.EntityInfo.EntityInfoFactory.from;
+
 /**
  * Reads information from the countries file and extracts the DXCC entities' information.
  * <p>
@@ -30,7 +32,7 @@ import java.util.stream.Stream;
  * 10   List of additional DXCC prefixes
  * <p>
  * NOTE:: the longitude is POSITIVE for WEST longitudes, which is the opposite of what is required for various calculations
- * so it is reverted here
+ * so it is reverted when entities are created.
  */
 public class CountryFileReader {
 
@@ -47,11 +49,11 @@ public class CountryFileReader {
                     .map(line -> line.split(","))
                     .flatMap(entityDetails -> Stream.concat(
                             // the main entity
-                            Stream.of(new EntityInfo(toPrefix(entityDetails[0]), entityDetails[1], toDouble(entityDetails[6]), -toDouble(entityDetails[7]))),
+                            Stream.of(from(entityDetails[0], entityDetails[1], entityDetails[6], entityDetails[7])),
                             // the additional entries
                             Stream.of(entityDetails[9].split(" "))
                                     .filter(validSecondaryPrefix::test)
-                                    .map(prefix -> new EntityInfo(toPrefix(prefix), entityDetails[1], toDouble(entityDetails[6]), -toDouble(entityDetails[7])))
+                                    .map(prefix -> from(prefix, entityDetails[1], entityDetails[6], entityDetails[7]))
                                     .collect(Collectors.toList()).stream()
                     ))
                     .collect(Collectors.toMap(entity -> entity.prefix, entity -> entity, (entity1, entity2) -> entity1));
@@ -61,14 +63,6 @@ public class CountryFileReader {
         }
     }
 
-    private static double toDouble(String numericalValue) {
-        return Double.parseDouble(numericalValue);
-    }
-
-    private static String toPrefix(String prefix) {
-        // remove the '*' from the prefix if it exists - it is not part of the DXCC entity name
-        return prefix.startsWith("*") ? prefix.substring(1) : prefix;
-    }
 
     public static InputStream getCountryFile() {
         return (new CountryFileReader()).getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
