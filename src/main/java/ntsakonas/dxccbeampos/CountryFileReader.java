@@ -3,9 +3,8 @@ package ntsakonas.dxccbeampos;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.TreeSet;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -37,7 +36,7 @@ public class CountryFileReader {
 
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
-    public static Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
+    public static Map<String, EntityInfo> loadPrefixes(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
             return countryFile
@@ -53,10 +52,10 @@ public class CountryFileReader {
                                     .map(prefix -> new EntityInfo(toPrefix(prefix), entityDetails[1], toDouble(entityDetails[6]), -toDouble(entityDetails[7])))
                                     .collect(Collectors.toList()).stream()
                     ))
-                    .collect(Collectors.toCollection(TreeSet::new));
+                    .collect(Collectors.toMap(entity -> entity.prefix, entity -> entity, (entity1, entity2) -> entity1));
         } catch (Throwable e) {
             e.printStackTrace();
-            return Collections.EMPTY_SET;
+            return Collections.EMPTY_MAP;
         }
     }
 

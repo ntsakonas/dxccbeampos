@@ -9,11 +9,8 @@
     <list default="true" id="abf4ea60-7677-4a78-a4e7-a87cf72e3164" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/PositionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/SomeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/SomeTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -70,54 +67,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            <state relative-caret-position="257">
+              <caret line="43" column="84" selection-start-line="43" selection-start-column="84" selection-end-line="43" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DistanceCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="79" column="6" lean-forward="true" selection-start-line="79" selection-start-column="6" selection-end-line="79" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="65" lean-forward="true" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-              <folding>
-                <element signature="e#123#124#0" expanded="true" />
-                <element signature="e#159#160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -126,7 +80,19 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="827">
+              <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,10 +101,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/EntityInfo.java">
+        <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/Stream.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="266">
+              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/ReferencePipeline.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="413" column="31" lean-forward="true" selection-start-line="413" selection-start-column="31" selection-end-line="413" selection-end-column="31" />
+              <folding>
+                <element signature="e#17384#17385#0" expanded="true" />
+                <element signature="e#17432#17433#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/DistinctOps.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -178,12 +175,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/SomeTests.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/EntityInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" />
         <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/PositionInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java" />
       </list>
     </option>
   </component>
@@ -417,13 +414,27 @@
       <option name="project" value="LOCAL" />
       <updated>1608563775309</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="renamed class to a more meaningful name">
+      <created>1608564602609</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608564602609</updated>
+    </task>
+    <task id="LOCAL-00010" summary="clarified the output message">
+      <created>1608564773996</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608564773996</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="2560" height="1413" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24701671" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1070008" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -432,7 +443,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32994527" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17946708" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34952977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30015674" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -444,7 +455,7 @@
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24968153" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.24940334" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Gradle" order="5" weight="0.23468576" />
@@ -462,14 +473,16 @@
     <MESSAGE value="country reader is now static" />
     <MESSAGE value="refactored calculation pipeline" />
     <MESSAGE value="minor improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor improvements" />
+    <MESSAGE value="renamed class to a more meaningful name" />
+    <MESSAGE value="clarified the output message" />
+    <option name="LAST_COMMIT_MESSAGE" value="clarified the output message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java</url>
-          <line>75</line>
+          <line>76</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
@@ -572,27 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="65" lean-forward="true" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-          <folding>
-            <element signature="e#123#124#0" expanded="true" />
-            <element signature="e#159#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DistanceCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -600,10 +592,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="36">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioningPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamPositioning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -612,18 +618,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        <state relative-caret-position="257">
+          <caret line="43" column="84" selection-start-line="43" selection-start-column="84" selection-end-line="43" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java">
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/DistinctOps.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        <state relative-caret-position="180">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/ReferencePipeline.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="413" column="31" lean-forward="true" selection-start-line="413" selection-start-column="31" selection-end-line="413" selection-end-column="31" />
+          <folding>
+            <element signature="e#17384#17385#0" expanded="true" />
+            <element signature="e#17432#17433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk/jre/lib/rt.jar!/java/util/stream/Stream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/CountryFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="827">
+          <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

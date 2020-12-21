@@ -3,20 +3,20 @@ package ntsakonas.dxccbeampos;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static ntsakonas.dxccbeampos.BeamPositioning.entityForPrefix;
 import static ntsakonas.dxccbeampos.BeamPositioning.beamingForPrefixes;
+import static ntsakonas.dxccbeampos.BeamPositioning.entityForPrefix;
 import static ntsakonas.dxccbeampos.BeamPositioningPrinter.printCalculationFailure;
 
 public class DXCCBeamPointing {
 
     private final static String COUNTRY_FILE = "countries.txt";
 
-    public final void beamInfo(String myDXCCPrefix, Collection<EntityInfo> entitiesInfo) {
+    public final void beamInfo(String myDXCCPrefix, Map<String, EntityInfo> entitiesInfo) {
 
         EntityInfo myEntityInfo = entityForPrefix.apply(entitiesInfo, myDXCCPrefix)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
@@ -40,7 +40,7 @@ public class DXCCBeamPointing {
 
     // Calculate beaming/distance between the DX station and both the target and my location
     private Stream<Optional<BeamingInfo>> calculateBeamings(String input,
-                                                            Collection<EntityInfo> entitiesInfo,
+                                                            Map<String, EntityInfo> entitiesInfo,
                                                             Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
         return Stream.of(input.toUpperCase())
                 .map(line -> line.split(" "))
@@ -65,7 +65,7 @@ public class DXCCBeamPointing {
 
         DXCCBeamPointing beamPointing = new DXCCBeamPointing();
         InputStream inputStream = beamPointing.getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
-        Collection<EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(inputStream);
+        Map<String, EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(inputStream);
 
         if (entitiesInfo.isEmpty()) {
             System.out.println("hmmm...could not read the country files...exiting");
