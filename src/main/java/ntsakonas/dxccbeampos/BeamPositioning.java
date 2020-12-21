@@ -19,5 +19,4 @@ public class BeamPositioning {
 
     public static BiFunction<Collection<EntityInfo>, String, Optional<EntityInfo>> entityForPrefix = (entitiesInfo, prefix) -> entitiesInfo.stream().filter(entityInfo -> entityInfo.prefix.equals(prefix)).findFirst();
 
-
 }

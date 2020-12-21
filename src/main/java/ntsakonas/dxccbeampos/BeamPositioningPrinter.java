@@ -9,7 +9,7 @@ public class BeamPositioningPrinter {
     public static void printBeamings(BeamingInfo beamingInfo) {
 
         System.out.println(String.format("%s -> %s", beamingInfo.dxCountry, beamingInfo.targetCountry));
-        System.out.println(String.format("target vs my loc : Beaming diff %+.2f distance diff %+.2f",
+        System.out.println(String.format("beaming from DX to target vs my loc : Beaming diff %+.2f distance diff %+.2f",
                 normalisedBearingDiff(beamingInfo.bearingToTargetPrefix, beamingInfo.bearingToMyLocation),
                 beamingInfo.distanceToMyLocation - beamingInfo.distanceToTargetPrefix));
         System.out.println(String.format("DX -> my loc : Beaming %.2f distance %.2f", beamingInfo.bearingToMyLocation, beamingInfo.distanceToMyLocation));
