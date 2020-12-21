@@ -4,26 +4,12 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class BeamPositioningPrinter {
-    private BeamPositioning beamPositioning;
 
-    public BeamPositioningPrinter(BeamPositioning beamPositioning) {
-        this.beamPositioning = beamPositioning;
-    }
+    public void printBeamings(Optional<PositionInfo> positioningForPrefix) {
 
-    public void showBeaming(String input) {
-        String[] inputPrefix = input.split(" ");
-        if (inputPrefix.length != 2) {
-            System.out.println("hmmm, please enter 2 DXCC prefixes");
-            return;
-        }
-        Optional<BeamPositioning.PositionInfo> positioningForPrefix = beamPositioning.getPositioningForPrefix(inputPrefix[0], inputPrefix[1]);
-        printBeamings(positioningForPrefix);
-    }
-
-    private static void printBeamings(Optional<BeamPositioning.PositionInfo> positioningForPrefix) {
-        positioningForPrefix.ifPresent(new Consumer<BeamPositioning.PositionInfo>() {
+        positioningForPrefix.ifPresent(new Consumer<PositionInfo>() {
             @Override
-            public void accept(BeamPositioning.PositionInfo positionInfo) {
+            public void accept(PositionInfo positionInfo) {
                 System.out.println(String.format("%s -> %s", positionInfo.dxCountry, positionInfo.targetCountry));
                 System.out.println(String.format("target vs my loc : Beaming diff %+.2f distance diff %+.2f",
                         normalisedBearingDiff(positionInfo.bearingToTargetPrefix, positionInfo.bearingToMyLocation),
