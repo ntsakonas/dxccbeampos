@@ -3,7 +3,7 @@ package ntsakonas.dxccbeampos;
 /*
   Shows the results (minimal info for quick reading)
  */
-public class BeamPositioningPrinter {
+public class BeamingInfoPrinter {
 
     public static void printBeamings(BeamingInfo beamingInfo) {
 

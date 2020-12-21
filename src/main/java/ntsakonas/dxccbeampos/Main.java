@@ -53,7 +53,7 @@ public class Main {
         // read input and display results
         // very rough, keep reading from input until it is killed
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        in.lines().forEach(input -> inputToBeamingFunction.apply(input).ifPresent(BeamPositioningPrinter::printBeamings));
+        in.lines().forEach(input -> inputToBeamingFunction.apply(input).ifPresent(BeamingInfoPrinter::printBeamings));
     }
 
 }
