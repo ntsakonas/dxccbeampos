@@ -37,7 +37,7 @@ public class CountryFileReader {
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
 
-    public Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
+    public static Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
             return countryFile
@@ -60,11 +60,11 @@ public class CountryFileReader {
         }
     }
 
-    private double toDouble(String numericalValue) {
+    private static double toDouble(String numericalValue) {
         return Double.parseDouble(numericalValue);
     }
 
-    private String toPrefix(String prefix) {
+    private static String toPrefix(String prefix) {
         // remove the '*' from the prefix if it exists - it is not part of the DXCC entity name
         return prefix.startsWith("*") ? prefix.substring(1) : prefix;
     }
