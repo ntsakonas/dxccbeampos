@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.TreeSet;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,6 +34,9 @@ import java.util.stream.Stream;
  */
 public class CountryFileReader {
 
+    private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
+
+
     public Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
@@ -45,7 +49,7 @@ public class CountryFileReader {
                             Stream.of(new EntityInfo(toPrefix(entityDetails[0]), entityDetails[1], toDouble(entityDetails[6]), -toDouble(entityDetails[7]))),
                             // the additional entries
                             Stream.of(entityDetails[9].split(" "))
-                                    .filter(prefix -> !prefix.equals(entityDetails[0]) && !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("="))
+                                    .filter(validSecondaryPrefix::test)
                                     .map(prefix -> new EntityInfo(toPrefix(prefix), entityDetails[1], toDouble(entityDetails[6]), -toDouble(entityDetails[7])))
                                     .collect(Collectors.toList()).stream()
                     ))
