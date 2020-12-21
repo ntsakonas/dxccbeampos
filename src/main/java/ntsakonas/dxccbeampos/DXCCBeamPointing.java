@@ -10,11 +10,11 @@ import static ntsakonas.dxccbeampos.BeamPositioning.beamingForPrefixes;
 public class DXCCBeamPointing {
 
     public static BiFunction<EntityInfo, Function<String, Optional<EntityInfo>>, Function<String, Optional<BeamingInfo>>> beamInfo =
-            (myDXCCEntity, entityForPrefix) -> inputLine -> {
+            (myDXCCEntity, entityForPrefixFunc) -> inputLine -> {
 
                 Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beamCalcFunction = beamingForPrefixes.apply(myDXCCEntity);
                 return Stream.of(inputLine)
-                        .flatMap(input -> calculateBeamings(inputLine, entityForPrefix, beamCalcFunction))
+                        .flatMap(input -> calculateBeamings(inputLine, entityForPrefixFunc, beamCalcFunction))
                         .findFirst()
                         .flatMap(beamingInfo -> beamingInfo);
             };
