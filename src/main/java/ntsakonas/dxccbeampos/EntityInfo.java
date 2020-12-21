@@ -1,6 +1,7 @@
 package ntsakonas.dxccbeampos;
 
 class EntityInfo implements Comparable<EntityInfo> {
+
     public final String prefix;
     public final String countryName;
     public final double latitude;
@@ -11,10 +12,6 @@ class EntityInfo implements Comparable<EntityInfo> {
         this.countryName = countryName;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public EntityInfo withPrefix(String newPrefix) {
-        return new EntityInfo(newPrefix, this.countryName, this.latitude, this.longitude);
     }
 
     @Override
