@@ -36,7 +36,6 @@ public class CountryFileReader {
 
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
-
     public static Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {

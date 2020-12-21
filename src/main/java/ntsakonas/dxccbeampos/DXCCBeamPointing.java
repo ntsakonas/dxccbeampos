@@ -6,70 +6,68 @@ import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
+
+import static ntsakonas.dxccbeampos.BeamPositioning.entityForPrefix;
+import static ntsakonas.dxccbeampos.BeamPositioning.positionForPrefixes;
 
 public class DXCCBeamPointing {
 
     private final static String COUNTRY_FILE = "countries.txt";
 
-    public final void beamInfo(String myDXCCPrefix, BeamPositioningPrinter bpPrinter) throws Throwable {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
-        Collection<EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(inputStream);
+    public final void beamInfo(String myDXCCPrefix, Collection<EntityInfo> entitiesInfo) throws Throwable {
 
-        if (entitiesInfo.isEmpty()) {
-            System.out.println("hmmm...could not read the country files...");
-            return;
-        }
+        EntityInfo myEntityInfo = entityForPrefix.apply(entitiesInfo, myDXCCPrefix)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
 
-        EntityInfo myEntityInfo = BeamPositioning.entityForPrefix.apply(entitiesInfo, myDXCCPrefix).orElseThrow((Supplier<Throwable>) () -> new IllegalArgumentException("Unknown prefix for own DXCC country"));
-        Function<EntityInfo, Function<EntityInfo, PositionInfo>> beaming = BeamPositioning.positionForPrefixes.apply(myEntityInfo);
+        Function<EntityInfo, Function<EntityInfo, PositionInfo>> beamCalcFunction = positionForPrefixes.apply(myEntityInfo);
 
-        System.out.println("(...keep entering prefix pairs: DX TARGET)");
+        System.out.println(String.format("Your DXCC country is %s (%s)", myEntityInfo.prefix, myEntityInfo.countryName));
+        System.out.println("(keep entering prefix pairs: DX TARGET)");
         System.out.println("READY!");
 
         // read input and display results
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        in.lines().forEach(input -> showBeaming(input, entitiesInfo, beaming, bpPrinter));
+        in.lines()
+                .flatMap(input -> calculateBeamings(input, entitiesInfo, beamCalcFunction))
+                .forEach(input -> input.ifPresent(BeamPositioningPrinter::printBeamings));
     }
 
-    private void showBeaming(String input, Collection<EntityInfo> entitiesInfo,
-                             Function<EntityInfo, Function<EntityInfo, PositionInfo>> beaming,
-                             BeamPositioningPrinter printer) {
-        Stream.of(input.toUpperCase())
+    // Calculate beaming/distance between the DX station and both the target and my location
+    private Stream<Optional<PositionInfo>> calculateBeamings(String input,
+                                                             Collection<EntityInfo> entitiesInfo,
+                                                             Function<EntityInfo, Function<EntityInfo, PositionInfo>> beaming) {
+        return Stream.of(input.toUpperCase())
                 .map(line -> line.split(" "))
                 .filter(prefixes -> prefixes.length == 2)
-                .map(prefixes -> calculatePositions(prefixes, entitiesInfo, beaming))
-                .forEach(printer::printBeamings);
+                .map(prefixes -> calculatePositions(entityForPrefix.apply(entitiesInfo, prefixes[0]),
+                        entityForPrefix.apply(entitiesInfo, prefixes[1]), beaming));
     }
 
-    private Optional<PositionInfo> calculatePositions(String[] prefixes,
-                                                      Collection<EntityInfo> entitiesInfo,
+    private Optional<PositionInfo> calculatePositions(Optional<EntityInfo> dxEntityInfo,
+                                                      Optional<EntityInfo> targetEntityInfo,
                                                       Function<EntityInfo, Function<EntityInfo, PositionInfo>> beaming) {
-        String dx = prefixes[0];
-        String target = prefixes[1];
-
-        // read DX
-        Optional<EntityInfo> dxEntityInfo = BeamPositioning.entityForPrefix.apply(entitiesInfo, dx);
-        Optional<EntityInfo> targetEntityInfo = BeamPositioning.entityForPrefix.apply(entitiesInfo, target);
-
-        return dxEntityInfo
-                .flatMap(dxEntity ->
-                        targetEntityInfo.flatMap(targetEntity -> Optional.of(beaming.apply(dxEntity).apply(targetEntity))
-                        )
-                );
-
+        return dxEntityInfo.flatMap(dxEntity -> targetEntityInfo.flatMap(targetEntity -> Optional.of(beaming.apply(dxEntity).apply(targetEntity))));
     }
 
 
     public static void main(String[] args) throws Throwable {
-        System.out.println("DXCC Beam pointing 1.1 (2020)");
+        System.out.println("DXCC Beaming calculator v1.1 (2020), SV1DJG/2E0PZA");
         if (args.length != 1 && args.length != 3) {
             System.out.println("You need to provide your own DXCC prefix that will be used as your location.");
             return;
         }
 
+
         DXCCBeamPointing beamPointing = new DXCCBeamPointing();
-        beamPointing.beamInfo(args[0], new BeamPositioningPrinter());
+        InputStream inputStream = beamPointing.getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
+        Collection<EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(inputStream);
+
+        if (entitiesInfo.isEmpty()) {
+            System.out.println("hmmm...could not read the country files...exiting");
+            return;
+        }
+
+        beamPointing.beamInfo(args[0], entitiesInfo);
     }
 }
