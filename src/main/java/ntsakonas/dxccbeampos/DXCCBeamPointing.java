@@ -13,14 +13,14 @@ public class DXCCBeamPointing {
 
     public final void beamInfo(String myDXCCPrefix, Function<String, Optional<EntityInfo>> entityForPrefix) {
 
-        EntityInfo myEntityInfo = entityForPrefix.apply(myDXCCPrefix)
+        EntityInfo myDXCCEntity = entityForPrefix.apply(myDXCCPrefix)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
 
-        Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beamCalcFunction = beamingForPrefixes.apply(myEntityInfo);
+        Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beamCalcFunction = beamingForPrefixes.apply(myDXCCEntity);
 
-        System.out.println(String.format("Your DXCC country is %s (%s)", myEntityInfo.prefix, myEntityInfo.countryName));
+        System.out.println(String.format("Your DXCC country is %s (%s)", myDXCCEntity.prefix, myDXCCEntity.countryName));
         System.out.println("(keep entering prefix pairs as follows: DX TARGET)");
-        System.out.println("READY!");
+        System.out.println("READY! (press CTRL+C to exit)");
 
         // read input and display results
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -49,6 +49,5 @@ public class DXCCBeamPointing {
                                                      Function<EntityInfo, Function<EntityInfo, BeamingInfo>> beaming) {
         return dxEntityInfo.flatMap(dxEntity -> targetEntityInfo.flatMap(targetEntity -> Optional.of(beaming.apply(dxEntity).apply(targetEntity))));
     }
-
 
 }

@@ -15,6 +15,7 @@ public class Main {
     private final static String COUNTRY_FILE = "countries.txt";
 
     public static void main(String[] args) {
+
         System.out.println("DXCC Beaming calculator v1.1 (2020), SV1DJG/2E0PZA");
         if (args.length != 1) {
             System.out.println("You need to provide your own DXCC prefix that will be used as your location.");
