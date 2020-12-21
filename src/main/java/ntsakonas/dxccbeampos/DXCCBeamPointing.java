@@ -3,22 +3,24 @@ package ntsakonas.dxccbeampos;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Collection;
-import java.util.List;
 
 public class DXCCBeamPointing {
 
+    private final static String COUNTRY_FILE = "countries.txt";
+
     public static void main(String[] args) {
-        System.out.println("DXCC Beam pointing 1.0 (2019)");
+        System.out.println("DXCC Beam pointing 1.1 (2020)");
         if (args.length != 1 && args.length != 3) {
             System.out.println("You need to provide your own DXCC prefix that will be used as your location.");
             return;
         }
 
         CountryFileReader cfReader = new CountryFileReader();
-        Collection<EntityInfo> entitiesInfo = cfReader.loadPrefixes();
+        Collection<EntityInfo> entitiesInfo = cfReader.loadPrefixes(cfReader.getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE));
         if (entitiesInfo.isEmpty()) {
             System.out.println("hmmm...could not read the country files...");
         }
+
 
         // quick debugging
         if (args.length == 3) {

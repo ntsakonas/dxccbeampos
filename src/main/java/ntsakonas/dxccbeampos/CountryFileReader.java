@@ -1,6 +1,7 @@
 package ntsakonas.dxccbeampos;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Collections;
@@ -32,10 +33,8 @@ import java.util.stream.Stream;
  */
 public class CountryFileReader {
 
-    private final static String COUNTRY_FILE = "countries.txt";
-
-    public Collection<EntityInfo> loadPrefixes() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE)));
+    public Collection<EntityInfo> loadPrefixes(InputStream inputStream) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
             return countryFile
                     .filter(line -> !line.isEmpty())
