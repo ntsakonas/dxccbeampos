@@ -2,14 +2,18 @@ package ntsakonas.dxccbeampos;
 
 public class BeamPositioningPrinter {
 
-    public static void printBeamings(PositionInfo positionInfo) {
+    public static void printCalculationFailure(){
+        System.out.println("nah..that did not work.");
+    }
 
-        System.out.println(String.format("%s -> %s", positionInfo.dxCountry, positionInfo.targetCountry));
+    public static void printBeamings(BeamingInfo beamingInfo) {
+
+        System.out.println(String.format("%s -> %s", beamingInfo.dxCountry, beamingInfo.targetCountry));
         System.out.println(String.format("target vs my loc : Beaming diff %+.2f distance diff %+.2f",
-                normalisedBearingDiff(positionInfo.bearingToTargetPrefix, positionInfo.bearingToMyLocation),
-                positionInfo.distanceToMyLocation - positionInfo.distanceToTargetPrefix));
-        System.out.println(String.format("DX -> my loc : Beaming %.2f distance %.2f", positionInfo.bearingToMyLocation, positionInfo.distanceToMyLocation));
-        System.out.println(String.format("DX -> target : Beaming %.2f distance %.2f", positionInfo.bearingToTargetPrefix, positionInfo.distanceToTargetPrefix));
+                normalisedBearingDiff(beamingInfo.bearingToTargetPrefix, beamingInfo.bearingToMyLocation),
+                beamingInfo.distanceToMyLocation - beamingInfo.distanceToTargetPrefix));
+        System.out.println(String.format("DX -> my loc : Beaming %.2f distance %.2f", beamingInfo.bearingToMyLocation, beamingInfo.distanceToMyLocation));
+        System.out.println(String.format("DX -> target : Beaming %.2f distance %.2f", beamingInfo.bearingToTargetPrefix, beamingInfo.distanceToTargetPrefix));
         System.out.println();
     }
 

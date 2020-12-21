@@ -1,6 +1,6 @@
 package ntsakonas.dxccbeampos;
 
-public class PositionInfo {
+public class BeamingInfo {
 
     public final String dxCountry;
     public final String targetCountry;
@@ -9,7 +9,7 @@ public class PositionInfo {
     public final double bearingToMyLocation;
     public final double distanceToMyLocation;
 
-    public PositionInfo(String dxCountry, String targetCountry, double bearingToTargetPrefix, double distanceToTargetPrefix, double bearingToMyLocation, double distanceToMyLocation) {
+    public BeamingInfo(String dxCountry, String targetCountry, double bearingToTargetPrefix, double distanceToTargetPrefix, double bearingToMyLocation, double distanceToMyLocation) {
         this.dxCountry = dxCountry;
         this.targetCountry = targetCountry;
         this.bearingToTargetPrefix = bearingToTargetPrefix;

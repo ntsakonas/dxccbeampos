@@ -12,8 +12,9 @@ import java.util.stream.Stream;
 
 /**
  * Reads information from the countries file and extracts the DXCC entities' information.
+ * <p>
  * The country file is downloaded from http://www.country-files.com/
- * The original file is fixed column size and its format is described here: http://www.country-files.com/cty-dat-format/
+ * The original file uses fixed column size and its format is described here: http://www.country-files.com/cty-dat-format/
  * Different logging programs use different variations and the easiest to use is the CSV version found here http://www.country-files.com/contest/aether/
  * <p>
  * The CSV version has the same filed order but it is not fixed width, just comma separated

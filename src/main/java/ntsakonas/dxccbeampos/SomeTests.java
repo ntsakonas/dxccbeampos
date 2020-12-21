@@ -41,16 +41,16 @@ public class SomeTests {
 
 //        test_beamings();
 //        BeamPositioning bp = new BeamPositioning("G", entitiesInfo);
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
 
 //        BeamPositioning bp = new BeamPositioning("UR", entitiesInfo);
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
-//        Optional<BeamPositioning.PositionInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
+//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
 
 
 }
