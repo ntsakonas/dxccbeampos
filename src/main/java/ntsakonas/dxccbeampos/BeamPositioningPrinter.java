@@ -5,10 +5,6 @@ package ntsakonas.dxccbeampos;
  */
 public class BeamPositioningPrinter {
 
-    public static void printCalculationFailure(){
-        System.out.println("nah..that did not work.");
-    }
-
     public static void printBeamings(BeamingInfo beamingInfo) {
 
         System.out.println(String.format("%s -> %s", beamingInfo.dxCountry, beamingInfo.targetCountry));

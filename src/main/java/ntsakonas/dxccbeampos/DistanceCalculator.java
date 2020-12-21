@@ -19,7 +19,10 @@
 
 package ntsakonas.dxccbeampos;
 
-
+/*
+    Short path distance and bearing calculator
+    (copied from my private library - to be replaced with a gradle dependency when the library is publicly available)
+ */
 public class DistanceCalculator {
 
     private static final double EARTH_RADIUS = 6371.0; // in km;

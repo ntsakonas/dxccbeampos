@@ -34,6 +34,8 @@ import java.util.stream.Stream;
  */
 public class CountryFileReader {
 
+    private final static String COUNTRY_FILE = "countries.txt";
+
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
     public static Map<String, EntityInfo> loadPrefixes(InputStream inputStream) {
@@ -66,5 +68,9 @@ public class CountryFileReader {
     private static String toPrefix(String prefix) {
         // remove the '*' from the prefix if it exists - it is not part of the DXCC entity name
         return prefix.startsWith("*") ? prefix.substring(1) : prefix;
+    }
+
+    public static InputStream getCountryFile() {
+        return (new CountryFileReader()).getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
     }
 }
