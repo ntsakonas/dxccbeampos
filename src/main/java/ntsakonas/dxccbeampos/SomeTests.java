@@ -1,6 +1,7 @@
 package ntsakonas.dxccbeampos;
 
 public class SomeTests {
+
     private static void test_beamings() {
         System.out.println(String.format("%+.2f should be +55.0", normalisedBearing_test(45.0, 100.0)));
         System.out.println(String.format("%+.2f should be -40.0", normalisedBearing_test(45.0, 5.0)));
@@ -22,11 +23,11 @@ public class SomeTests {
     }
 
     private static double normalisedBearing_test(double bearingToTargetPrefix, double bearingToMyLocation) {
-        double bearingDifference = bearingToTargetPrefix -bearingToMyLocation;
+        double bearingDifference = bearingToTargetPrefix - bearingToMyLocation;
         double absBearing = Math.abs(bearingDifference);
 
         if (absBearing < 180.0) {
-            double directionOfTurn = Math.signum(bearingDifference) > 0 ?-1.0 : 1.0;
+            double directionOfTurn = Math.signum(bearingDifference) > 0 ? -1.0 : 1.0;
             return directionOfTurn * absBearing;
         } else {
             // more than 180 degrees apart, go the other way around
@@ -38,19 +39,7 @@ public class SomeTests {
         }
     }
 
-
-//        test_beamings();
-//        BeamPositioning bp = new BeamPositioning("G", entitiesInfo);
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
-
-//        BeamPositioning bp = new BeamPositioning("UR", entitiesInfo);
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "ZS");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "A5");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "EI");
-//        Optional<BeamPositioning.BeamingInfo> positioningForPrefix = bp.getPositioningForPrefix("SV", "UR");
-
-
+    public static void main(String[] args) {
+        test_beamings();
+    }
 }

@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/*
+  Functions to calculate beaming between prefixes
+ */
 public class BeamPositioning {
 
     public static Function<EntityInfo, Function<EntityInfo, Function<EntityInfo, BeamingInfo>>> beamingForPrefixes =

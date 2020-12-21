@@ -14,7 +14,6 @@ import static ntsakonas.dxccbeampos.BeamPositioningPrinter.printCalculationFailu
 
 public class DXCCBeamPointing {
 
-    private final static String COUNTRY_FILE = "countries.txt";
 
     public final void beamInfo(String myDXCCPrefix, Map<String, EntityInfo> entitiesInfo) {
 
@@ -56,22 +55,4 @@ public class DXCCBeamPointing {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println("DXCC Beaming calculator v1.1 (2020), SV1DJG/2E0PZA");
-        if (args.length != 1 && args.length != 3) {
-            System.out.println("You need to provide your own DXCC prefix that will be used as your location.");
-            return;
-        }
-
-        DXCCBeamPointing beamPointing = new DXCCBeamPointing();
-        InputStream inputStream = beamPointing.getClass().getClassLoader().getResourceAsStream(COUNTRY_FILE);
-        Map<String, EntityInfo> entitiesInfo = CountryFileReader.loadPrefixes(inputStream);
-
-        if (entitiesInfo.isEmpty()) {
-            System.out.println("hmmm...could not read the country files...exiting");
-            return;
-        }
-
-        beamPointing.beamInfo(args[0], entitiesInfo);
-    }
 }

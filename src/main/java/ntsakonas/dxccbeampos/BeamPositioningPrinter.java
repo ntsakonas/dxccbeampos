@@ -1,5 +1,8 @@
 package ntsakonas.dxccbeampos;
 
+/*
+  Shows the results (minimal info for quick reading)
+ */
 public class BeamPositioningPrinter {
 
     public static void printCalculationFailure(){
