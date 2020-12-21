@@ -2,7 +2,6 @@ package ntsakonas.dxccbeampos;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /*
@@ -20,6 +19,6 @@ public class BeamPositioning {
                 return new BeamingInfo(dxEntity.countryName, targetEntity.countryName, bearingToTarget, distanceToTarget, bearingToMyLocation, distanceToMyLocation);
             };
 
-    public static BiFunction<Map<String, EntityInfo>, String, Optional<EntityInfo>> entityForPrefix = (entitiesInfo, prefix) -> Optional.ofNullable(entitiesInfo.get(prefix));
+    public static Function<Map<String, EntityInfo>, Function<String, Optional<EntityInfo>>> entityForPrefix = entitiesInfo -> prefix -> Optional.ofNullable(entitiesInfo.get(prefix));
 
 }

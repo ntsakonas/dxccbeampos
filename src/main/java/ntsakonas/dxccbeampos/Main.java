@@ -3,6 +3,8 @@ package ntsakonas.dxccbeampos;
 import java.io.InputStream;
 import java.util.Map;
 
+import static ntsakonas.dxccbeampos.BeamPositioning.entityForPrefix;
+
 /*
     Main driver of the app.
     Make sure that the countries file is present and provide your own DXCC prefix that will be used as the center
@@ -28,7 +30,7 @@ public class Main {
             return;
         }
 
-        beamPointing.beamInfo(args[0], entitiesInfo);
+        beamPointing.beamInfo(args[0], entityForPrefix.apply(entitiesInfo));
     }
 
 }
