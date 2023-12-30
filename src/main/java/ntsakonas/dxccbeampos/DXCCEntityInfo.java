@@ -20,14 +20,14 @@
 
 package ntsakonas.dxccbeampos;
 
-class EntityInfo implements Comparable<EntityInfo> {
+class DXCCEntityInfo implements Comparable<DXCCEntityInfo> {
 
     public final String prefix;
     public final String countryName;
     public final double latitude;
     public final double longitude;
 
-    private EntityInfo(String prefix, String countryName, double latitude, double longitude) {
+    private DXCCEntityInfo(String prefix, String countryName, double latitude, double longitude) {
         this.prefix = prefix;
         this.countryName = countryName;
         this.latitude = latitude;
@@ -35,7 +35,7 @@ class EntityInfo implements Comparable<EntityInfo> {
     }
 
     @Override
-    public int compareTo(EntityInfo other) {
+    public int compareTo(DXCCEntityInfo other) {
         return this.prefix.compareTo(other.prefix);
     }
 
@@ -44,8 +44,8 @@ class EntityInfo implements Comparable<EntityInfo> {
         //NOTE:: the longitude is POSITIVE for WEST longitudes, which is the opposite of what is required for various calculations
         // so it is reverted here
 
-        public static EntityInfo from(String prefix, String countryName, String latitude, String longitude) {
-            return new EntityInfo(cleanPrefix(prefix), countryName, toDouble(latitude), -toDouble(longitude));
+        public static DXCCEntityInfo from(String prefix, String countryName, String latitude, String longitude) {
+            return new DXCCEntityInfo(cleanPrefix(prefix), countryName, toDouble(latitude), -toDouble(longitude));
         }
 
         private static double toDouble(String numericalValue) {

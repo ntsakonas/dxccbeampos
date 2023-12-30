@@ -41,14 +41,14 @@ public class DXCCBeamPointing {
      The input is provided as a string containing 2 DXCC entities , the DX entity first, followed by the target entity
      e.g. "VE DL"
    */
-    public static  BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFromMyDXCC(EntityInfo myDXCCEntity){
+    public static  BiFunction<Optional<DXCCEntityInfo>, Optional<DXCCEntityInfo>, Optional<BeamingInfo>> beamingCalculationFromMyDXCC(DXCCEntityInfo myDXCCEntity){
         // set myDXCCEntity as the reference for all calculations
         return applyIfBothProvided(entitiesBeamingFrom(myDXCCEntity));
     }
 
     public static Function<String, Optional<BeamingInfo>> calculateBeamingInfo(
-            BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFunction,
-            Function<String, Optional<EntityInfo>> entityForPrefixFunc) {
+            BiFunction<Optional<DXCCEntityInfo>, Optional<DXCCEntityInfo>, Optional<BeamingInfo>> beamingCalculationFunction,
+            Function<String, Optional<DXCCEntityInfo>> entityForPrefixFunc) {
         return inputLine -> {
             return Stream.of(inputLine.toUpperCase())
                     .flatMap(input -> Stream.of(input)
@@ -63,7 +63,7 @@ public class DXCCBeamPointing {
     /*
         Calculates the beaming/distance from the dx-> reference and dx->target
      */
-    public static BiFunction<EntityInfo, EntityInfo, BeamingInfo> entitiesBeamingFrom(EntityInfo referenceEntity) {
+    public static BiFunction<DXCCEntityInfo, DXCCEntityInfo, BeamingInfo> entitiesBeamingFrom(DXCCEntityInfo referenceEntity) {
         return (dxEntity, targetEntity) -> {
             double bearingToTarget = DistanceCalculator.bearingTo(dxEntity.latitude, dxEntity.longitude, targetEntity.latitude, targetEntity.longitude);
             double lpBearingToTarget = DistanceCalculator.longPathBearingFromShortPath(bearingToTarget);
@@ -85,7 +85,7 @@ public class DXCCBeamPointing {
     /*
         Returns the details of a DXCC entity based on the provided prefix
      */
-    public static Function<String, Optional<EntityInfo>> entityForPrefixLookup(Map<String, EntityInfo> entitiesInfo) {
+    public static Function<String, Optional<DXCCEntityInfo>> entityForPrefixLookup(Map<String, DXCCEntityInfo> entitiesInfo) {
         return prefix -> Optional.ofNullable(entitiesInfo.get(prefix));
     }
 

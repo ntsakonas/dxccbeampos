@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static ntsakonas.dxccbeampos.EntityInfo.EntityInfoFactory.from;
+import static ntsakonas.dxccbeampos.DXCCEntityInfo.EntityInfoFactory.from;
 
 /**
  * Reads information from the countries file and extracts the DXCC entities' information.
@@ -60,7 +60,7 @@ public class CountryFileReader {
 
     private final static Predicate<String> validSecondaryPrefix = prefix -> !prefix.isEmpty() && !prefix.contains("[") && !prefix.contains("(") && !prefix.startsWith("=");
 
-    public static Map<String, EntityInfo> loadDXCCEntities(InputStream inputStream) {
+    public static Map<String, DXCCEntityInfo> loadDXCCEntities(InputStream inputStream) {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         try (Stream<String> countryFile = br.lines()) {
             return countryFile

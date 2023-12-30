@@ -26,11 +26,8 @@ package ntsakonas.dxccbeampos;
 public class DistanceCalculator {
 
     private static final double EARTH_RADIUS = 6371.0; // in km;
-    // not part of my private library - added in this project
-    //
     // arc length for 1 degree in kilometers, i.e. 60 Nautical Miles
     private static final double ONE_DEGREE_ARC_IN_KM = 111.2;
-
 
     //
     // calculates the distance in Km between 2 points.

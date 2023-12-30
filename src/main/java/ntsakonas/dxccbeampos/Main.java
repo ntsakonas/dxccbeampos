@@ -51,18 +51,18 @@ public class Main {
         }
 
         // load country file and extract DXCC entities info
-        Map<String, EntityInfo> entitiesInfo = loadDXCCEntities(CountryFileReader.getCountryFile());
+        Map<String, DXCCEntityInfo> entitiesInfo = loadDXCCEntities(CountryFileReader.getCountryFile());
 
         if (entitiesInfo.isEmpty()) {
             System.out.println("hmmm...could not read the country file...exiting");
             return;
         }
 
-        final Function<String, Optional<EntityInfo>> entityForPrefixLookupFunction = entityForPrefixLookup(entitiesInfo);
+        final Function<String, Optional<DXCCEntityInfo>> entityForPrefixLookupFunction = entityForPrefixLookup(entitiesInfo);
 
         // make sure that my own prefix is set correctly first.
         String myDXCCPrefix = args[0];
-        EntityInfo myDXCCEntity = entityForPrefixLookupFunction.apply(myDXCCPrefix.toUpperCase())
+        DXCCEntityInfo myDXCCEntity = entityForPrefixLookupFunction.apply(myDXCCPrefix.toUpperCase())
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
 
         // ready to start
