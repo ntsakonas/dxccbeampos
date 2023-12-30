@@ -62,7 +62,7 @@ public class Main {
 
         // make sure that my own prefix is set correctly first.
         String myDXCCPrefix = args[0];
-        EntityInfo myDXCCEntity = entityForPrefixLookupFunction.apply(myDXCCPrefix)
+        EntityInfo myDXCCEntity = entityForPrefixLookupFunction.apply(myDXCCPrefix.toUpperCase())
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
 
         // ready to start
