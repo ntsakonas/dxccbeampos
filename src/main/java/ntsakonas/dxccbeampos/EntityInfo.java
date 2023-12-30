@@ -34,7 +34,6 @@ class EntityInfo implements Comparable<EntityInfo> {
         this.longitude = longitude;
     }
 
-
     @Override
     public int compareTo(EntityInfo other) {
         return this.prefix.compareTo(other.prefix);

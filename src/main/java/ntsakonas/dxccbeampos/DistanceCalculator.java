@@ -26,6 +26,11 @@ package ntsakonas.dxccbeampos;
 public class DistanceCalculator {
 
     private static final double EARTH_RADIUS = 6371.0; // in km;
+    // not part of my private library - added in this project
+    //
+    // arc length for 1 degree in kilometers, i.e. 60 Nautical Miles
+    private static final double ONE_DEGREE_ARC_IN_KM = 111.2;
+
 
     //
     // calculates the distance in Km between 2 points.
@@ -48,6 +53,15 @@ public class DistanceCalculator {
         double km = EARTH_RADIUS * c;
 
         return km;
+    }
+
+    // calculate the long path distance in Km between 2 points.
+    public static double longPathDistanceFrom(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude) {
+        return longPathDistanceFromShortPath(distanceFrom(fromLatitude, fromLongitude, toLatitude, toLongitude));
+    }
+
+    public static double longPathDistanceFromShortPath(double shortPathDistance) {
+        return (ONE_DEGREE_ARC_IN_KM * 360.0) - shortPathDistance;
     }
 
     //
@@ -73,6 +87,14 @@ public class DistanceCalculator {
         brng = (360.0 + brng) % 360.0;
 
         return brng;
+    }
+
+    public static double longPathBearingTo(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude) {
+        return longPathBearingFromShortPath(bearingTo(fromLatitude, fromLongitude, toLatitude, toLongitude));
+    }
+
+    public static double longPathBearingFromShortPath(double shortPathBearing) {
+        return (180.0 + shortPathBearing) % 360.0;
     }
 
 }

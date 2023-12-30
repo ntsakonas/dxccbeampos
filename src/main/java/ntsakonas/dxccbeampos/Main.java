@@ -27,8 +27,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import static ntsakonas.dxccbeampos.CountryFileReader.loadDXCCEntities;
-import static ntsakonas.dxccbeampos.DXCCBeamPointing.calculateBeamingInfo;
-import static ntsakonas.dxccbeampos.DXCCBeamPointing.entityForPrefixLookup;
+import static ntsakonas.dxccbeampos.DXCCBeamPointing.*;
 
 /*
     Main driver of the app.
@@ -40,11 +39,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("DXCC Beaming calculator v1.0 (Copyright (C) 2020, SV1DJG/2E0PZA)");
-        System.out.println("This program comes with ABSOLUTELY NO WARRANTY; ");
-        System.out.println("This is free software, and you are welcome to redistribute it\n" +
-                "    under certain conditions; ");
-        System.out.println();
+        System.out.println("""
+        DXCC Beaming calculator v1.0 (Copyright (C) 2020, SV1DJG/2E0PZA)
+        ----------------------------------------------------------------
+        This is free software and comes with ABSOLUTELY NO WARRANTY.
+        """);
 
         if (args.length != 1) {
             System.out.println("You need to provide your own DXCC prefix that will be used as the reference location.");
@@ -67,13 +66,14 @@ public class Main {
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Unknown prefix for my own DXCC country (could not find prefix %s", myDXCCPrefix)));
 
         // ready to start
-        System.out.println(String.format("Your DXCC country is %s (%s)", myDXCCEntity.prefix, myDXCCEntity.countryName));
-        System.out.println("(keep entering prefix pairs as follows: DX TARGET)");
+        System.out.println(String.format("** My DXCC country is %s (%s) **", myDXCCEntity.prefix, myDXCCEntity.countryName));
+        System.out.println("keep entering prefix pairs as follows: DX OTHER");
+        System.out.println("(DX is the station of interest)");
         System.out.println("(press CTRL+C to exit)");
         System.out.println("READY!");
 
         // map the whole operation into a function of user input-> calculation
-        Function<String, Optional<BeamingInfo>> inputToBeamingFunction = calculateBeamingInfo(myDXCCEntity, entityForPrefixLookupFunction);
+        Function<String, Optional<BeamingInfo>> inputToBeamingFunction = calculateBeamingInfo(beamingCalculationFromMyDXCC(myDXCCEntity), entityForPrefixLookupFunction);
 
         // read input and display results
         // very rough, keep reading from input until it is killed

@@ -26,13 +26,37 @@ package ntsakonas.dxccbeampos;
 public class BeamingInfoPrinter {
 
     public static void printBeamings(BeamingInfo beamingInfo) {
-        System.out.println(String.format("%s -> %s", beamingInfo.dxCountry, beamingInfo.targetCountry));
-        System.out.println(String.format("target vs my loc : Beaming diff %+.2f distance diff %+.2f Km",
-                normalisedBearingDiff(beamingInfo.bearingToTargetPrefix, beamingInfo.bearingToMyLocation),
-                beamingInfo.distanceToMyLocation - beamingInfo.distanceToTargetPrefix));
-        System.out.println(String.format("DX -> target : Beaming %.2f distance %.2f Km", beamingInfo.bearingToTargetPrefix, beamingInfo.distanceToTargetPrefix));
-        System.out.println(String.format("DX -> my loc : Beaming %.2f distance %.2f Km", beamingInfo.bearingToMyLocation, beamingInfo.distanceToMyLocation));
-        System.out.println();
+        System.out.println(String.format("%s -> %s", beamingInfo.dxCountry(), beamingInfo.targetCountry()));
+        System.out.println(String.format("in SP I am %+.2f degrees, %s",
+                        normalisedBearingDiff(beamingInfo.bearingToTargetPrefix(), beamingInfo.bearingToMyLocation()),
+                        humanReadableDistanceDiff(beamingInfo.distanceToMyLocation() - beamingInfo.distanceToTargetPrefix())
+                )
+        );
+        System.out.println(String.format("in LP I am %+.2f degrees, %s",
+                        normalisedBearingDiff(beamingInfo.longPathBearingToTargetPrefix(), beamingInfo.longPathBearingToMyLocation()),
+                        humanReadableDistanceDiff(beamingInfo.longPathDistanceToMyLocation() - beamingInfo.longPathDistanceToTargetPrefix())
+                )
+        );
+
+        System.out.println(
+                String.format("""
+                                SP:
+                                %s --> %6.2f\u00B0/%8.2f Km --> %s
+                                %s --> %6.2f\u00B0/%8.2f Km --> Me
+                                LP:
+                                %s --> %6.2f\u00B0/%8.2f Km --> %s
+                                %s --> %6.2f\u00B0/%8.2f Km --> Me
+                                """,
+                        beamingInfo.dxCountry(), beamingInfo.bearingToTargetPrefix(), beamingInfo.distanceToTargetPrefix(),beamingInfo.targetCountry(),
+                        beamingInfo.dxCountry(), beamingInfo.bearingToMyLocation(), beamingInfo.distanceToMyLocation(),
+                        beamingInfo.dxCountry(), beamingInfo.longPathBearingToTargetPrefix(), beamingInfo.longPathDistanceToTargetPrefix(),beamingInfo.targetCountry(),
+                        beamingInfo.dxCountry(), beamingInfo.longPathBearingToMyLocation(), beamingInfo.longPathDistanceToMyLocation()
+                )
+        );
+    }
+
+    private static String humanReadableDistanceDiff(double distanceDiff) {
+        return "%.2f Km %s".formatted(Math.abs(distanceDiff), distanceDiff > 0 ? "farther" : "closer");
     }
 
     private static double normalisedBearingDiff(double bearingToTargetPrefix, double bearingToMyLocation) {

@@ -41,12 +41,15 @@ public class DXCCBeamPointing {
      The input is provided as a string containing 2 DXCC entities , the DX entity first, followed by the target entity
      e.g. "VE DL"
    */
-    public static Function<String, Optional<BeamingInfo>> calculateBeamingInfo(EntityInfo myDXCCEntity, Function<String, Optional<EntityInfo>> entityForPrefixFunc) {
-        return inputLine -> {
-            // set myDXCCEntity as the reference for all calculations
-            BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFunction
-                    = applyIfBothProvided(entitiesBeamingFrom(myDXCCEntity));
+    public static  BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFromMyDXCC(EntityInfo myDXCCEntity){
+        // set myDXCCEntity as the reference for all calculations
+        return applyIfBothProvided(entitiesBeamingFrom(myDXCCEntity));
+    }
 
+    public static Function<String, Optional<BeamingInfo>> calculateBeamingInfo(
+            BiFunction<Optional<EntityInfo>, Optional<EntityInfo>, Optional<BeamingInfo>> beamingCalculationFunction,
+            Function<String, Optional<EntityInfo>> entityForPrefixFunc) {
+        return inputLine -> {
             return Stream.of(inputLine.toUpperCase())
                     .flatMap(input -> Stream.of(input)
                             .map(line -> line.split(" "))
@@ -63,11 +66,19 @@ public class DXCCBeamPointing {
     public static BiFunction<EntityInfo, EntityInfo, BeamingInfo> entitiesBeamingFrom(EntityInfo referenceEntity) {
         return (dxEntity, targetEntity) -> {
             double bearingToTarget = DistanceCalculator.bearingTo(dxEntity.latitude, dxEntity.longitude, targetEntity.latitude, targetEntity.longitude);
-            double distanceToTarget = DistanceCalculator.distanceFrom(dxEntity.latitude, dxEntity.longitude, targetEntity.latitude, targetEntity.longitude);
-            double bearingToMyLocation = DistanceCalculator.bearingTo(dxEntity.latitude, dxEntity.longitude, referenceEntity.latitude, referenceEntity.longitude);
-            double distanceToMyLocation = DistanceCalculator.distanceFrom(dxEntity.latitude, dxEntity.longitude, referenceEntity.latitude, referenceEntity.longitude);
+            double lpBearingToTarget = DistanceCalculator.longPathBearingFromShortPath(bearingToTarget);
 
-            return new BeamingInfo(dxEntity.countryName, targetEntity.countryName, bearingToTarget, distanceToTarget, bearingToMyLocation, distanceToMyLocation);
+            double distanceToTarget = DistanceCalculator.distanceFrom(dxEntity.latitude, dxEntity.longitude, targetEntity.latitude, targetEntity.longitude);
+            double lpDistanceToTarget = DistanceCalculator.longPathDistanceFromShortPath(distanceToTarget);
+
+            double bearingToMyLocation = DistanceCalculator.bearingTo(dxEntity.latitude, dxEntity.longitude, referenceEntity.latitude, referenceEntity.longitude);
+            double lpBearingToMyLocation = DistanceCalculator.longPathBearingFromShortPath(bearingToMyLocation);
+
+            double distanceToMyLocation = DistanceCalculator.distanceFrom(dxEntity.latitude, dxEntity.longitude, referenceEntity.latitude, referenceEntity.longitude);
+            double lpDistanceToMyLocation = DistanceCalculator.longPathDistanceFromShortPath(distanceToMyLocation);
+
+            return new BeamingInfo(dxEntity.countryName, targetEntity.countryName, bearingToTarget, distanceToTarget, bearingToMyLocation, distanceToMyLocation,
+                    lpBearingToTarget, lpDistanceToTarget, lpBearingToMyLocation, lpDistanceToMyLocation);
         };
     }
 
