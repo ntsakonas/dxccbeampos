@@ -9,9 +9,9 @@ thus maximising your chances to contact them. If you have already listened to th
 you can quickly decide whether it makes sense to call them now or wait until they turn their antennas to your direction.
 
 ## How it works
-You run the program with your own DXCC prefix (which is resolved to your country coordinates) and let it running.
+You run the program with your own DXCC prefix (which is resolved (roughly) to your country coordinates) and let it running.
 When you hear the 2 stations you type in their prefixes and you get a calculation of how closer/farther you are relative to the 
-other station and how many degress to the right/left.
+other station and how many degrees to their right/left.
 
 For example, if you are located in England and you are listening a station from Canada having a QSO with a station from Italy
 you just have to enter their prefixes in the order "DX OTHER" , where DX is the station of interest (in this case the Canadian station)
@@ -30,7 +30,7 @@ Canada --> 235.82°/33091.03 Km --> Italy
 Canada --> 231.10°/34547.96 Km --> Me
 ```
 
-which shows that the DX station (the Canadian station) "sees us" 4.72 to their left and 1456.94 Km closer than the other station.
+which shows that the DX station (the Canadian station) "sees us" 4.72 degrees to their left and 1456.94 Km closer than the other station.
 Practically we are in the same direction but much closer.
 
 The raw bearings and distances from the DX station are also provided for both short and long path circuits. 
@@ -51,7 +51,7 @@ Sweden -->  53.00°/38688.53 Km --> Me
 ```
 
 This shows that although we are 1088.88 Km closer than the Greek station we are 68.01 degrees to their right, which is quite off the main direction.
-If the station is using a highly directive antenna, we probably are off into their null.
+If the station is using a highly directive antenna, we probably are off the main lobe and into their null.
 
 ## How to run it
 
@@ -70,6 +70,6 @@ java -jar dxccbeampos-1.1.jar G
 or 
 
 ```
-java -jar dxccbeampos-1.0.jar 2E
+java -jar dxccbeampos-1.1.jar 2E
 ```
 
