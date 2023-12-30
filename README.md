@@ -30,10 +30,10 @@ Canada --> 235.82°/33091.03 Km --> Italy
 Canada --> 231.10°/34547.96 Km --> Me
 ```
 
-which shows that the DX station (the Canadian station) "sees us" 4.72 to the left and 1456.94 Km closer than the other station.
+which shows that the DX station (the Canadian station) "sees us" 4.72 to their left and 1456.94 Km closer than the other station.
 Practically we are in the same direction but much closer.
 
-Additional details with the full bearing and distance between all 3 stations is provided for both short and long path circuits for nay mental calculation. 
+The raw bearings and distances from the DX station are also provided for both short and long path circuits. 
 
 As another example, while still located in England, a station from Sweden is having a QSO with a station from Greece and we are interested 
 in the station from Sweden. We enter "sm sv" and we get
