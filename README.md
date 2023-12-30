@@ -14,45 +14,57 @@ When you hear the 2 stations you type in their prefixes and you get a calculatio
 other station and how many degress to the right/left.
 
 For example, if you are located in England and you are listening a station from Canada having a QSO with a station from Italy
-you just have to enter their prefixes in the order "DX TARGET" , where DX is the station of interest (in this case the Canadian station)
-and TARGET is the station of reference (in this case the Italian station).
+you just have to enter their prefixes in the order "DX OTHER" , where DX is the station of interest (in this case the Canadian station)
+and OTHER is the station of reference (in this case the Italian station).
 in this case we enter "VE I" and we get this result:
 
 ```
 Canada -> Italy
-target vs my loc : Beaming diff -4.72 distance diff -1456.94 Km
-DX -> target : Beaming 55.82 distance 6940.97 Km
-DX -> my loc : Beaming 51.10 distance 5484.04 Km
+via SP I am -4.72 degrees, 1456.94 Km closer
+via LP I am -4.72 degrees, 1456.94 Km farther
+SP:
+Canada -->  55.82°/ 6940.97 Km --> Italy
+Canada -->  51.10°/ 5484.04 Km --> Me
+LP:
+Canada --> 235.82°/33091.03 Km --> Italy
+Canada --> 231.10°/34547.96 Km --> Me
 ```
 
 which shows that the DX station (the Canadian station) "sees us" 4.72 to the left and 1456.94 Km closer than the other station.
-Practically we are in the same direction but much closer. 
+Practically we are in the same direction but much closer.
+
+Additional details with the full bearing and distance between all 3 stations is provided for both short and long path circuits for nay mental calculation. 
 
 As another example, while still located in England, a station from Sweden is having a QSO with a station from Greece and we are interested 
 in the station from Sweden. We enter "sm sv" and we get
 
 ```
 Sweden -> Greece
-target vs my loc : Beaming diff +68.01 distance diff -1088.88 Km
-DX -> target : Beaming 165.00 distance 2432.35 Km
-DX -> my loc : Beaming 233.00 distance 1343.47 Km
+via SP I am +68.01 degrees, 1088.88 Km closer
+via LP I am +68.01 degrees, 1088.88 Km farther
+SP:
+Sweden --> 165.00°/ 2432.35 Km --> Greece
+Sweden --> 233.00°/ 1343.47 Km --> Me
+LP:
+Sweden --> 345.00°/37599.65 Km --> Greece
+Sweden -->  53.00°/38688.53 Km --> Me
 ```
 
-This shows that although we are 1088.88 Km closer than the Greek station we are 68.01 degress to their right, which is quite off the main direction.
+This shows that although we are 1088.88 Km closer than the Greek station we are 68.01 degrees to their right, which is quite off the main direction.
 If the station is using a highly directive antenna, we probably are off into their null.
 
 ## How to run it
 
 Download the pre-built `jar` from the releases, make sure you have Java 1.8 or later installed and run it on a terminal like this:
 ```
-java -jar dxccbeampos-1.0.jar MY_PREFIX
+java -jar dxccbeampos-1.1.jar MY_PREFIX
 ```
 
 replacing MY_PREFIX with your callsign prefix
 e.g running it for an English prefix, that would be
 
 ```
-java -jar dxccbeampos-1.0.jar G
+java -jar dxccbeampos-1.1.jar G
 ```
 
 or 

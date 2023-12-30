@@ -10,21 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf4ea60-7677-4a78-a4e7-a87cf72e3164" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfoPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/BeamingInfoPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DXCCBeamPointing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DistanceCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/DistanceCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/EntityInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/EntityInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntsakonas/dxccbeampos/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -485,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1608595706616</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="modified the output to include long path info and made the info quicker to read">
+      <option name="closed" value="true" />
+      <created>1703950456707</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1703950456707</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -577,7 +574,8 @@
     <MESSAGE value="added Km indicator in the printouts" />
     <MESSAGE value="slightly better name for the printer class" />
     <MESSAGE value="added licensing information" />
-    <option name="LAST_COMMIT_MESSAGE" value="added licensing information" />
+    <MESSAGE value="modified the output to include long path info and made the info quicker to read" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified the output to include long path info and made the info quicker to read" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

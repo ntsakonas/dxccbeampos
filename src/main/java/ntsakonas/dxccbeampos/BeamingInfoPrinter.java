@@ -27,12 +27,12 @@ public class BeamingInfoPrinter {
 
     public static void printBeamings(BeamingInfo beamingInfo) {
         System.out.println(String.format("%s -> %s", beamingInfo.dxCountry(), beamingInfo.targetCountry()));
-        System.out.println(String.format("in SP I am %+.2f degrees, %s",
+        System.out.println(String.format("via SP I am %+.2f degrees, %s",
                         normalisedBearingDiff(beamingInfo.bearingToTargetPrefix(), beamingInfo.bearingToMyLocation()),
                         humanReadableDistanceDiff(beamingInfo.distanceToMyLocation() - beamingInfo.distanceToTargetPrefix())
                 )
         );
-        System.out.println(String.format("in LP I am %+.2f degrees, %s",
+        System.out.println(String.format("via LP I am %+.2f degrees, %s",
                         normalisedBearingDiff(beamingInfo.longPathBearingToTargetPrefix(), beamingInfo.longPathBearingToMyLocation()),
                         humanReadableDistanceDiff(beamingInfo.longPathDistanceToMyLocation() - beamingInfo.longPathDistanceToTargetPrefix())
                 )
