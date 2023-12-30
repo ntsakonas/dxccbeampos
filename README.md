@@ -55,7 +55,7 @@ If the station is using a highly directive antenna, we probably are off into the
 
 ## How to run it
 
-Download the pre-built `jar` from the releases, make sure you have Java 1.8 or later installed and run it on a terminal like this:
+Download the pre-built `jar` from the releases, make sure you have Java 21 or later installed and run it on a terminal like this:
 ```
 java -jar dxccbeampos-1.1.jar MY_PREFIX
 ```
